@@ -600,6 +600,71 @@ h4 {
   transition: all 0.5s;
 }
 
+.modal2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 60rem;
+  background-color: #f3f3f3;
+  padding: 5rem 6rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.5s;
+}
+
+.modal2 h2 {
+  margin-bottom: 2rem;
+}
+
+.modal2 p {
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.tab {
+  margin-left: 1.75rem;
+}
+
+.modal2 button {
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  padding: 1rem 1.5rem !important;
+  margin-top: 1.5rem;
+  border-radius: 10rem !important;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button--container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal2__btn-confirm {
+  background-color: var(--color-primary);
+  font-size: 1.4rem !important;
+}
+
+.modal2__btn-confirm:hover,
+.modal2__btn-confirm:active {
+  background-color: var(--color-primary-darker);
+  padding: 1.25rem 1.75rem !important;
+}
+
+.modal2__btn-cancel {
+  background-color: none;
+  border: 0.25px solid rgba(0, 0, 0, 0.3) !important;
+  font-size: 1.4rem !important;
+}
+
+.modal2__btn-cancel:hover,
+.modal2__btn-cancel:active {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1.25rem 1.75rem !important;
+}
+
 .overlay {
   position: fixed;
   top: 0;

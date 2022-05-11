@@ -31,6 +31,7 @@ const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
 
 const btnLogin = document.querySelector('.login__btn');
+const btnLogout = document.querySelector('.logout__btn');
 const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
@@ -239,6 +240,15 @@ if (btnLogin) {
       // Update UI
       updateUI(currentAccount);
     } else console.log('wrong pin?');
+  });
+}
+
+if (btnLogout) {
+  btnLogout.addEventListener('click', function (e) {
+    e.preventDefault();
+    clearInterval(timer);
+    labelWelcome.textContent = 'Log in to get started';
+    containerApp.style.opacity = 0;
   });
 }
 

@@ -5,6 +5,7 @@
 // Todo - Tie in the actual baking app. find a way to transfer the data between scrits. potentially refractor into more js files. Add hints/visual pop ups to improve ux. Push to git.
 
 const modal = document.querySelector('.modal');
+const modal2 = document.querySelector('.modal2');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
@@ -18,6 +19,7 @@ const form = document.querySelector('.modal__form');
 const firstName = document.querySelector('#firstName');
 const lastName = document.querySelector('#lastName');
 const pin = document.querySelector('#pin');
+
 export let accounts = [];
 
 ////////////////////////////////////////
@@ -88,6 +90,7 @@ if (modal) {
 
   const closeModal = function () {
     modal.classList.add('hidden');
+    modal2.classList.add('hidden');
     overlay.classList.add('hidden');
   };
 
@@ -359,8 +362,57 @@ if (modal) {
       currency: 'USD',
       locale: 'en-US',
     };
-    accounts.push(newAccount);
-    localStorage.setItem('accounts', JSON.stringify(accounts));
-    window.location.href = 'app.html';
+
+    modal2.innerHTML = ` <button class="btn--close-modal">&times;</button>
+    <h2 class="modal__header">
+      Congratulations, ${newAccount.owner}! Your account at
+      <span class="highlight">Bankist</span> has been approved.
+    </h2>
+    <p>Your login credentials are as follows:</p>
+    <p class="tab">- Username: ${newAccount.username}</p>
+    <p class="tab">- Pin: ${newAccount.pin}</p>
+    <p class="center">Does everything appear correct?</p>
+    <span class="button--container">
+      <button class="modal2__btn-cancel">No. I'd like to make edits</button>
+      <button class="modal2__btn-confirm">Yes. Take me to sign in!</button>
+    </span>`;
+    const btnConfirmEntry = document.querySelector('.modal2__btn-confirm');
+    const btnCancelEntry = document.querySelector('.modal2__btn-cancel');
+    const btnCloseModal2 = document.querySelector('.btn--close-modal');
+    btnCloseModal2.addEventListener('click', closeModal);
+
+    modal2.classList.remove('hidden');
+    modal.classList.add('hidden');
+
+    console.log('still alive 2', btnConfirmEntry);
+
+    btnConfirmEntry.addEventListener('click', function (e) {
+      e.preventDefault();
+      console.log('button event listener working');
+      accounts.push(newAccount);
+      localStorage.setItem('accounts', JSON.stringify(accounts));
+      window.location.href = 'app.html';
+    });
+
+    btnCancelEntry.addEventListener('click', function (e) {
+      e.preventDefault();
+      console.log('button event listener working');
+      modal.classList.remove('hidden');
+      modal2.classList.add('hidden');
+    });
+
+    console.log('still alive 3', btnConfirmEntry);
+    // const response = confirm(
+    //   `You're account info is as follows:\nName: ${newAccount.owner}\nUsername: ${newAccount.username}\nPin: ${newAccount.pin}\nIf all this information appears correct, please press continue and you will be redirected to the sign-in page`
+    // );
+    // if (response == true) {
+    //   accounts.push(newAccount);
+    //   localStorage.setItem('accounts', JSON.stringify(accounts));
+    //   window.location.href = 'app.html';
+    // } else {
+    //   firstName.value = '';
+    //   lastName.value = '';
+    //   pin.value = '';
+    // }
   });
 }
