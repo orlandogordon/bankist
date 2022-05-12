@@ -20,16 +20,25 @@
       <p class="welcome">Log in to get started</p>
       <img src="img/logo.png" alt="Logo" class="logo" />
       <form class="login">
+        <svg class="info__icon">
+          <title>
+            Test Account Credentials &NewLine;Username: og &NewLine;Pin: 1111
+          </title>
+          <title>Test2</title>
+          <use xlink:href="img/icons.svg#icon-info"></use>
+        </svg>
         <input
           type="text"
           placeholder="user"
+          title="Username"
           class="login__input login__input--user"
         />
         <!-- In practice, use type="password" -->
         <input
-          type="text"
+          type="password"
           placeholder="PIN"
           maxlength="4"
+          title="Four-Digit Pin"
           class="login__input login__input--pin"
         />
         <button class="login__btn">&rarr;</button>

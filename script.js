@@ -23,10 +23,11 @@ const pin = document.querySelector('#pin');
 export let accounts = [];
 
 ////////////////////////////////////////
+
 const account1 = {
-  owner: 'Jonas Schmedtmann',
-  movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
-  interestRate: 1.2, // %
+  owner: 'Xavier Xander',
+  movements: [200, 650, -101.5, 35000, -1120.18, -119.12, 179.34, 800],
+  interestRate: 1.9, // %
   pin: 1111,
 
   movementsDates: [
@@ -47,7 +48,7 @@ const account2 = {
   owner: 'Orlando Gordon',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 1998,
+  pin: 1111,
 
   movementsDates: [
     '2019-11-01T13:15:33.035Z',
@@ -75,8 +76,6 @@ const init = function () {
   }
 };
 init();
-
-console.log(accounts);
 ///////////////////////////////////////
 
 ///////////////////////////////////////
@@ -132,7 +131,7 @@ if (modal) {
     // Matching strategy
     if (e.target.classList.contains('nav__link')) {
       const id = e.target.getAttribute('href');
-      console.log(id);
+      // console.log(id);
       document.querySelector(id).scrollIntoView({
         behavior: 'smooth',
       });
@@ -338,14 +337,12 @@ if (modal) {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     let usernames = [];
-    let username = firstName.value[0] + lastName.value[0];
+    let username =
+      firstName.value[0].toLowerCase() + lastName.value[0].toLowerCase();
     accounts.forEach(el => usernames.push(el.username));
-    console.log(usernames);
-    console.log(username);
 
     while (usernames.some(el => el == username)) {
       let i = 2;
-      console.log('in the loop');
       username = `${username}${i}`;
       alert(`Your username was taken so it will be: ${username}`);
       i++;
@@ -363,7 +360,7 @@ if (modal) {
       locale: 'en-US',
     };
 
-    modal2.innerHTML = ` <button class="btn--close-modal">&times;</button>
+    modal2.innerHTML = ` <button class="btn--close-modal2">&times;</button>
     <h2 class="modal__header">
       Congratulations, ${newAccount.owner}! Your account at
       <span class="highlight">Bankist</span> has been approved.
@@ -378,17 +375,15 @@ if (modal) {
     </span>`;
     const btnConfirmEntry = document.querySelector('.modal2__btn-confirm');
     const btnCancelEntry = document.querySelector('.modal2__btn-cancel');
-    const btnCloseModal2 = document.querySelector('.btn--close-modal');
+    const btnCloseModal2 = document.querySelector('.btn--close-modal2');
+
     btnCloseModal2.addEventListener('click', closeModal);
 
     modal2.classList.remove('hidden');
     modal.classList.add('hidden');
 
-    console.log('still alive 2', btnConfirmEntry);
-
     btnConfirmEntry.addEventListener('click', function (e) {
       e.preventDefault();
-      console.log('button event listener working');
       accounts.push(newAccount);
       localStorage.setItem('accounts', JSON.stringify(accounts));
       window.location.href = 'app.html';
@@ -396,23 +391,8 @@ if (modal) {
 
     btnCancelEntry.addEventListener('click', function (e) {
       e.preventDefault();
-      console.log('button event listener working');
       modal.classList.remove('hidden');
       modal2.classList.add('hidden');
     });
-
-    console.log('still alive 3', btnConfirmEntry);
-    // const response = confirm(
-    //   `You're account info is as follows:\nName: ${newAccount.owner}\nUsername: ${newAccount.username}\nPin: ${newAccount.pin}\nIf all this information appears correct, please press continue and you will be redirected to the sign-in page`
-    // );
-    // if (response == true) {
-    //   accounts.push(newAccount);
-    //   localStorage.setItem('accounts', JSON.stringify(accounts));
-    //   window.location.href = 'app.html';
-    // } else {
-    //   firstName.value = '';
-    //   lastName.value = '';
-    //   pin.value = '';
-    // }
   });
 }

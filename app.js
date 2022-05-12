@@ -36,6 +36,7 @@ const btnTransfer = document.querySelector('.form__btn--transfer');
 const btnLoan = document.querySelector('.form__btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
+const iconInfo = document.querySelector('.info__icon');
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
@@ -240,6 +241,11 @@ if (btnLogin) {
       // Update UI
       updateUI(currentAccount);
     } else console.log('wrong pin?');
+  });
+
+  iconInfo.addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log('click registered');
   });
 }
 
