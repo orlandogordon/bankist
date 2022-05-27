@@ -240,7 +240,7 @@ if (btnLogin) {
 
       // Update UI
       updateUI(currentAccount);
-    } else console.log('wrong pin?');
+    } else alert('Username or password invalid. Please refresh and try again.\n\nIf this error occurs again, please use test credentials shown by the information (i) button next to the input fields');
   });
 
   iconInfo.addEventListener('click', function (e) {
