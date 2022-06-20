@@ -457,3 +457,33 @@ h2 {
   transform: scale(1.07, 1.05) skewX(-15deg);
   background-image: var(--gradient-primary);
 }
+
+@media only screen and (max-width: 750px) {
+  html {
+    font-size: 30%;
+  }
+
+  body {
+    height: 100vh;
+    padding: 1.5rem;
+  }
+
+  a {
+    font-size: 1.7rem;
+    height: 50vh;
+    padding: 1rem;
+    transition: 1s;
+  }
+
+  a:hover,
+  a:active {
+    font-size: 2rem;
+  }
+  nav {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    height: 4.25rem;
+  }
+}
